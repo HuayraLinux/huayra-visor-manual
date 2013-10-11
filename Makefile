@@ -8,3 +8,7 @@ test:
 
 build:
 	grunt nodewebkit
+
+actualizar_documentacion:
+	rm -r -f src/documentacion
+	mv ~/vms/dokuwiki/documentacion src/

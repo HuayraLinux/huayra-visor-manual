@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>Index</title>
+    
+<script type="text/javascript" charset="utf-8">
+var gui = require('nw.gui');
+var ventana = gui.Window.get();
+var url_home = "app://./documentacion/index.html";
+var url_online = "http://huayra.conectarigualdad.gob.ar";
+var ventana_manual = undefined;
+var modo_online = false;
+
+var tray = new gui.Tray({title: '', icon: 'imagenes/tray.png' });
+
+var menu = new gui.Menu();
+
+menu.click = function() {
+  alert("asdasdasd");
+}
+
+menu.append(new gui.MenuItem({
+    click: function() {
+        var url = "";
+        
+        if (modo_online)
+            url = url_online;
+        else
+            url = url_home;
+        
+            ventana_manual = gui.Window.open(url, {toolbar: false});
+    },
+    label: 'Mostrar',
+}));
+
+menu.append(new gui.MenuItem({
+  type: 'checkbox', 
+  label: 'Ver desde la web (modo online)',
+  click: function() {
+      modo_online = this.checked;
+  }
+}));
+
+tray.menu = menu;
+    
+</script>
+    
+</head>
+    
+<body>
+    app.html
+</body>
+</html>
+

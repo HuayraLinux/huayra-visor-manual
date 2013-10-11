@@ -1,6 +1,6 @@
  {
     "name": "visor manual",
-    "main": "index.html",
+    "main": "app.html",
     "version": "0.1",
     "window": {
         "icon": "imagenes/icono.png",
