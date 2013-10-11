@@ -1,0 +1,19 @@
+{
+  "name": "visormanual",
+  "version": "0.0.0",
+  "description": "visor manual",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/hugoruscitti/visormanual.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-node-webkit-builder": "~0.1.11"
+  }
+}

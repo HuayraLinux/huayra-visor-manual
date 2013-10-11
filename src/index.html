@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>Index</title>
+    
+</head>
+<body>
+
+  <h1>Visor manual</h1>
+  
+  <p>Visor manual
+    
+</body>
+
+<script type="text/javascript" charset="utf-8">
+// Load native UI library
+var gui = require('nw.gui');
+
+// Create a tray icon
+var tray = new gui.Tray({ title: '', icon: 'imagenes/tray.png' });
+
+ //Give it a menu
+var menu = new gui.Menu();
+
+menu.append(new gui.MenuItem({
+    click: function() {
+        alert("mostrando ventana");
+    },
+    label: 'Mostrar',
+}));
+
+menu.append(new gui.MenuItem({
+  type: 'checkbox', 
+  label: 'Ver desde la web (modo online)'
+}));
+
+tray.menu = menu;
+    
+</script>
+</html>
+
