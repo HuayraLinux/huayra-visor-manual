@@ -1,6 +1,7 @@
 all:
-	@echo "test       Ejecuta una prueba de la aplicación."
-	@echo "build      Compila la aplicación para varias plataformas."
+	@echo "test                        Ejecuta una prueba de la aplicación."
+	@echo "build                       Compila la aplicación para varias plataformas."
+	@echo "actualizar_documentacion    Actualiza la documentación desde el wiki."
 
 test:
 	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
@@ -11,5 +12,7 @@ build:
 
 actualizar_documentacion:
 	rm -r -f src/documentacion
-	cp -rf ./mirror_documentacion src/documention
+	cp -rf ./mirror_documentacion src/documentacion
+	cp src/buscar.html src/documentacion/
 	#mv ~/vms/dokuwiki/documentacion src/
+	grunt string-replace
