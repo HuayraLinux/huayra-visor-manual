@@ -11,4 +11,5 @@ build:
 
 actualizar_documentacion:
 	rm -r -f src/documentacion
-	mv ~/vms/dokuwiki/documentacion src/
+	cp -rf ./mirror_documentacion src/documention
+	#mv ~/vms/dokuwiki/documentacion src/

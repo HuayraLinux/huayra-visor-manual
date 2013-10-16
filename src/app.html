@@ -4,7 +4,8 @@
 
     <title>Index</title>
     
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">    
+	
 var gui = require('nw.gui');
 var ventana = gui.Window.get();
 var url_home = "app://./documentacion/index.html";
@@ -12,40 +13,59 @@ var url_online = "http://huayra.conectarigualdad.gob.ar";
 var ventana_manual = undefined;
 var modo_online = false;
 
+ventana.on("close", function() {
+	gui.App.quit();
+});
+	
 var tray = new gui.Tray({title: '', icon: 'imagenes/tray.png' });
 
 var menu = new gui.Menu();
 
 menu.click = function() {
-  alert("asdasdasd");
+  // TODO: alert("asdasdasd");
 }
 
-menu.append(new gui.MenuItem({
-    click: function() {
-        var url = "";
-        
-        if (modo_online)
-            url = url_online;
-        else
-            url = url_home;
-        
-            ventana_manual = gui.Window.open(url, {toolbar: true});
-    },
-    label: 'Mostrar',
-}));
+function mostrar_ventana(url) {
+	
+	if (ventana_manual === undefined) {
+		ventana_manual = gui.Window.get(window.open(url, {toolbar: true}));
+		ventana_manual.on("close", function() {
+			this.close(true);
+			ventana_manual = undefined;
+		});
+	} else {
+		ventana_manual.window.location = url;
+		ventana_manual.restore();
+	}
+}
+
 
 menu.append(new gui.MenuItem({
-  type: 'checkbox', 
-  label: 'Ver desde la web (modo online)',
-  click: function() {
-      modo_online = this.checked;
+	label: 'Mostrar',
+	click: function() {
+		mostrar_ventana(url_home);
   }
 }));
 
+menu.append(new gui.MenuItem({
+  label: 'Mostrar (modo online)',
+  click: function() {
+		mostrar_ventana(url_online);
+  }
+}));
+	
+	
+menu.append(new gui.MenuItem({
+  label: 'Salir',
+  click: function() {
+		gui.App.quit();
+  }
+}));
+	
+
 tray.menu = menu;
-    
-</script>
-    
+   
+	</script>
 </head>
     
 <body>
