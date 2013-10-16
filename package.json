@@ -14,6 +14,12 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "grunt": "~0.4.1",
-    "grunt-node-webkit-builder": "~0.1.11"
+    "grunt-node-webkit-builder": "~0.1.11",
+    "grunt-string-replace": "~0.2.4",
+    "async": "~0.2.9",
+    "q": "~0.9.7"
+  },
+  "devDependencies": {
+    "q": "~0.9.7"
   }
 }

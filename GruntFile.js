@@ -10,9 +10,34 @@ module.exports = function (grunt) {
                 },
                 src: ['./src/**/*'] // Your node-wekit app
             },
+            'string-replace': {
+              kit: {
+                src: 'src/documentacion/**/*.html',
+                dest: './',
+                options: {
+                  replacements: [{
+                    pattern: /<div id="content"/ig,
+                    replacement: function (match, offset, string) {
+                      return '\n' +
+                        		 '<link rel="stylesheet" type="text/css" href="app://./estilo.css"/>\n' +
+                        		 '<script type="text/javascript" src="app://./app.js"></script>\n\n' + 
+                        
+                        		 "<div id='navegador'> \n" +
+                        	   "  <button onclick='history.back()'>« Atras</button> \n" +
+            								 "  <button onclick='history.forward()'>Avanzar »</button> \n" +
+            								 "  <a href='app://buscar.html'>Buscar</a> \n" +
+        										 "</div> \n" +
+                        
+                        	   '<div class="contenido" id="content"';
+                    }   
+                  }]  
+                }   
+              }   
+             }  
     });
 
     grunt.loadNpmTasks('grunt-node-webkit-builder');
-    //grunt.registerTask('default', ['grunt-node-webkit-builder']);
+    grunt.loadNpmTasks('grunt-string-replace');
+    //grunt.registerTask('default', ['grunt-string-replace']);
  }
 

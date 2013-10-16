@@ -4,7 +4,7 @@
     "version": "0.1",
     "window": {
         "icon": "imagenes/icono.png",
-        "toolbar": false,
+        "toolbar": true,
         "show": false,
         "min_width": 750,
         "min_height": 500,
