@@ -19,13 +19,15 @@ module.exports = function (grunt) {
                     pattern: /<div id="content"/ig,
                     replacement: function (match, offset, string) {
                       return '\n' +
+                        		 '<link rel="stylesheet" type="text/css" href="app://./css/bootstrap.css"/>\n' +
                         		 '<link rel="stylesheet" type="text/css" href="app://./estilo.css"/>\n' +
                         		 '<script type="text/javascript" src="app://./barra.js"></script>\n\n' + 
+                        		 '<script type="text/javascript" src="app://./js/bootstrap.js"></script>\n\n' + 
                         
                         		 "<div id='navegador'> \n" +
-                        	   "  <button onclick='history.back()'>« Atras</button> \n" +
-            								 "  <button onclick='history.forward()'>Avanzar »</button> \n" +
-            								 "  <a href='app://./buscar.html'>Buscar</a> \n" +
+                        	   "  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atras</a> \n" +
+            								 "  <a class='btn btn-success btn-xs' onclick='history.forward()'>Avanzar »</a> \n" +
+            								 "  <a class='btn btn-info btn-xs derecha' href='app://./documentacion/buscar.html'>Buscar</a> \n" +
         										 "</div> \n" +
                         
                         	   '<div class="contenido" id="content"';

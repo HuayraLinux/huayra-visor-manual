@@ -20,6 +20,7 @@
     "q": "~0.9.7"
   },
   "devDependencies": {
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "grunt-string-replace": "~0.2.4"
   }
 }
