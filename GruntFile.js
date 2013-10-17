@@ -25,8 +25,8 @@ module.exports = function (grunt) {
                         		 '<script type="text/javascript" src="app://./js/bootstrap.js"></script>\n\n' + 
                         
                         		 "<div id='navegador'> \n" +
-                        	   "  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atras</a> \n" +
-            								 "  <a class='btn btn-success btn-xs' onclick='history.forward()'>Avanzar »</a> \n" +
+                        	   "  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atrás</a> \n" +
+            								 "  <a class='btn btn-success btn-xs' onclick='history.forward()'>Adelante »</a> \n" +
             								 "  <a class='btn btn-info btn-xs derecha' href='app://./documentacion/buscar.html'>Buscar</a> \n" +
         										 "</div> \n" +
                         
