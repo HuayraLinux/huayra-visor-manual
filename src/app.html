@@ -27,7 +27,7 @@
 	function mostrar_ventana(url) {
 		
 		if (ventana_manual === undefined) {
-			ventana_manual = gui.Window.open(url, {toolbar: true});
+			ventana_manual = gui.Window.open(url, {toolbar: false});
 			ventana_manual.on("close", function() {
 				this.close(true);
 				ventana_manual = undefined;
