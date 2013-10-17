@@ -2,16 +2,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" dir="ltr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		
+		<title>Buscar</title>
 		</head>
 	
 	<body>
-<div id="content">
-<h1>Buscador</h1>
 
-<p>
-Input
-</p>
+<link rel="stylesheet" type="text/css" href="app://./css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="app://./estilo.css"/>
+<script type="text/javascript" src="app://./barra.js"></script>
+
+<script type="text/javascript" src="app://./js/bootstrap.js"></script>
+
+<div id='navegador'> 
+  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atras</a> 
+  <a class='btn btn-success btn-xs' onclick='history.forward()'>Avanzar »</a> 
+  <a class='btn btn-info btn-xs derecha' href='app://./documentacion/buscar.html'>Buscar</a> 
+</div> 
+<div class="contenido" id="content">
+ 
+ <div class='cuerpo-buscador'>
+	
+  <p>Ingresá el título o palabras claves para comenzar a buscar:</p>
+   
+	<p>
+		<input id='input' placeholder="contenido"/> <button id='boton' class='btn btn-success'>Buscar</button>
+	</p>
+  
+  <div class='resultados'>
+    <div id='en_curso' class='invisible'><img src='app://./imagenes/cargando.gif'/> Buscando ...</div>
+  	<div id='error' class="invisible alert alert-danger"><strong>Uh!</strong>, la búsqueda está deshabilitada en esta versión :|</div>
+  </div>
+ </div>
+  
+  
+<script>
+var input = window.document.getElementById('input');
+var boton = window.document.getElementById('boton');
+var error = window.document.getElementById('error');
+var en_curso = window.document.getElementById('en_curso');
+  
+input.focus();
+
+input.onkeydown = function(e) {
+  if (e.keyCode == 13) {
+    boton.click();
+  }
+}
+
+
+boton.onclick = function() {
+  en_curso.classList.remove('invisible');
+  error.classList.add('invisible');
+  
+  setTimeout(function() {
+    error.classList.remove('invisible');
+    en_curso.classList.add('invisible');
+  }, 2000);
+}
+  
+</script>
+  
+  
+  
 </div>
 	</body>
 	
