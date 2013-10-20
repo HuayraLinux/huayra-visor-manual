@@ -8,7 +8,6 @@
 	var gui = require('nw.gui');
 	var ventana = gui.Window.get();
 	var url_home = "app://./documentacion/index.html";
-	var url_online = "http://huayra.conectarigualdad.gob.ar";
 	var ventana_manual = undefined;
 	var modo_online = false;
 	
@@ -21,7 +20,7 @@
 	var menu = new gui.Menu();
 	
 	menu.click = function() {
-		// TODO: alert("asdasdasd");
+    alert("Detectando click izquierdo!");
 	}
 	
 	function mostrar_ventana(url) {
@@ -46,13 +45,6 @@
 		}
 	}));
 	
-	menu.append(new gui.MenuItem({
-		label: 'Mostrar (modo online)',
-		click: function() {
-			mostrar_ventana(url_online);
-		}
-	}));
-		
 		
 	menu.append(new gui.MenuItem({
 		label: 'Salir',
