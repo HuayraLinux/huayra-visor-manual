@@ -59,3 +59,8 @@ div#content {
 .resultados {
   margin-top: 1.5em;
 }
+
+.mw-headline {
+  padding-top: 40px;
+  display: inline-block;
+}
