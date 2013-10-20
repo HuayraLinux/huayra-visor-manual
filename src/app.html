@@ -5,11 +5,11 @@
 	<title>Index</title>
  
 	<script type="text/javascript" charset="utf-8">    
+  var TOOLBAR = false;
 	var gui = require('nw.gui');
 	var ventana = gui.Window.get();
 	var url_home = "app://./documentacion/index.html";
 	var ventana_manual = undefined;
-	var modo_online = false;
 	
 	ventana.on("close", function() {
 		gui.App.quit();
@@ -26,7 +26,7 @@
 	function mostrar_ventana(url) {
 		
 		if (ventana_manual === undefined) {
-			ventana_manual = gui.Window.open(url, {toolbar: false});
+			ventana_manual = gui.Window.open(url, {toolbar: TOOLBAR});
 			ventana_manual.on("close", function() {
 				this.close(true);
 				ventana_manual = undefined;
@@ -36,8 +36,8 @@
 			ventana_manual.restore();
 		}
 	}
-	
-	
+    
+    
 	menu.append(new gui.MenuItem({
 		label: 'Mostrar',
 		click: function() {
@@ -54,7 +54,6 @@
 	}));
 	
 	tray.menu = menu;
-		 
 	</script>
 </head>
     

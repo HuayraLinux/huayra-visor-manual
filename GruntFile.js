@@ -22,10 +22,11 @@ module.exports = function (grunt) {
                         		 '<link rel="stylesheet" type="text/css" href="app://./css/bootstrap.css"/>\n' +
                         		 '<link rel="stylesheet" type="text/css" href="app://./css/estilo.css"/>\n' +
                         		 '<link rel="stylesheet" type="text/css" href="app://./css/magnific-popup.css"/>\n' +
-                        		 '<script type="text/javascript" src="app://./js/barra.js"></script>\n\n' + 
                         		 '<script type="text/javascript" src="app://./js/jquery.min.js"></script>\n\n' + 
-                        		 '<script type="text/javascript" src="app://./js/bootstrap.js"></script>\n\n' + 
                         		 '<script type="text/javascript" src="app://./js/jquery.magnific-popup.js"></script>\n\n' + 
+                        		 '<script type="text/javascript" src="app://./js/bootstrap.js"></script>\n\n' + 
+                        		 '<script type="text/javascript" src="app://./js/barra.js"></script>\n\n' + 
+                        		 '<script type="text/javascript" src="app://./js/imagenes.js"></script>\n\n' + 
                         
                         		 "<div id='navegador'> \n" +
                         	   "  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atrás</a> \n" +
