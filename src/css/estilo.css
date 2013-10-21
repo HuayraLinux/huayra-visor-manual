@@ -64,3 +64,16 @@ div#content {
   padding-top: 40px;
   display: inline-block;
 }
+
+
+.resultados ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.resultados ul li {
+	border-radius: 5px;
+	background-color: rgb(241, 241, 241);
+	margin-bottom: 10px;
+	padding: 12px;
+}
