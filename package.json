@@ -17,7 +17,9 @@
     "grunt-node-webkit-builder": "~0.1.11",
     "grunt-string-replace": "~0.2.4",
     "async": "~0.2.9",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "walk": "~2.2.1",
+    "jsdom": "~0.8.8"
   },
   "devDependencies": {
     "q": "~0.9.7",
