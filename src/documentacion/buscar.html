@@ -1,65 +1,121 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" dir="ltr">
+<html lang="es" ng-app='app'>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Buscar</title>
-		</head>
-	
+	</head>
+
 	<body>
 
 <link rel="stylesheet" type="text/css" href="app://./css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="app://./estilo.css"/>
-<script type="text/javascript" src="app://./barra.js"></script>
-
+<link rel="stylesheet" type="text/css" href="app://./css/estilo.css"/>
+    
+<script type="text/javascript" src="app://./js/barra.js"></script>
 <script type="text/javascript" src="app://./js/bootstrap.js"></script>
+<script type="text/javascript" src="app://./js/angular.js"></script>
 
 <div id='navegador'> 
-  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atras</a> 
-  <a class='btn btn-success btn-xs' onclick='history.forward()'>Avanzar »</a> 
+  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atrás</a> 
+  <a class='btn btn-success btn-xs' href='app://./documentacion/index.html'>Inicio</a>
+  <a class='btn btn-success btn-xs' onclick='history.forward()'>Adelante »</a> 
   <a class='btn btn-info btn-xs derecha' href='app://./documentacion/buscar.html'>Buscar</a> 
 </div> 
-<div class="contenido" id="content">
+<div ng-controller='AppCtrl' class="contenido" id="content">
  
  <div class='cuerpo-buscador'>
 	
   <p>Ingresá el título o palabras claves para comenzar a buscar:</p>
    
 	<p>
-		<input id='input' placeholder="contenido"/> <button id='boton' class='btn btn-success'>Buscar</button>
+		<input ng-model='texto' id='input' placeholder="contenido"/> <button ng-disabled='buscando || texto ==""' id='boton' ng-click='buscar()' class='btn btn-success'>Buscar</button>
 	</p>
   
   <div class='resultados'>
-    <div id='en_curso' class='invisible'><img src='app://./imagenes/cargando.gif'/> Buscando ...</div>
-  	<div id='error' class="invisible alert alert-danger"><strong>Uh!</strong>, la búsqueda está deshabilitada en esta versión :|</div>
+    <div ng-show='buscando'><img src='app://./imagenes/cargando.gif'/> Buscando ...</div>
+    <div ng-hide='buscando'>
+      
+      <ul ng-hide='resultado == []'>
+        <li ng-repeat='r in resultado'>
+        	<a ng-href='app://{{r.src}}'>{{r.titulo}}</a>
+        </li>
+      </ul>
+      
+      <div ng-show='resultado === []'>
+        Sin resultados.
+      </div>
+    </div>
+    
+    
   </div>
  </div>
   
   
 <script>
-var input = window.document.getElementById('input');
-var boton = window.document.getElementById('boton');
-var error = window.document.getElementById('error');
-var en_curso = window.document.getElementById('en_curso');
+var app = angular.module('app', []);
+var walk = require('walk');
+var files = [];
   
+// Hace foco en el campo de texto
+var input = window.document.getElementById('input');
 input.focus();
-
+  
+// Dispara la busqueda si se pulsa enter sobre el campo de texto.
 input.onkeydown = function(e) {
   if (e.keyCode == 13) {
     boton.click();
   }
 }
-
-
-boton.onclick = function() {
-  en_curso.classList.remove('invisible');
-  error.classList.add('invisible');
   
-  setTimeout(function() {
-    error.classList.remove('invisible');
-    en_curso.classList.add('invisible');
-  }, 2000);
-}
+app.config(function($compileProvider){
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|app|mailto|file|javascript):/);
+});
   
+app.controller("AppCtrl", function($scope) {
+  $scope.texto = '';
+  $scope.buscando = false;
+  $scope.resultado = [];
+  
+  $scope.buscar = function() {
+    $scope.buscando = true;
+  	$scope.resultado = [];
+    
+    var walker  = walk.walk('./', {followLinks: false});
+    
+    walker.on('file', function(root, stat, next) {
+        files.push(root + '/' + stat.name);
+        next();
+    });
+    
+    walker.on('end', function() {
+      $scope.buscando = false;
+      $scope.$apply();
+      
+      for (var i=0; i<files.length; i++) {
+        var ruta_archivo = files[i];
+        
+        // Si es archivo .html
+        if (/.html$/.test(ruta_archivo)) {
+          
+          // Si el texto a buscar está en el nombre del archivo.
+          if (ruta_archivo.match($scope.texto)) {
+            
+            
+            
+          	$scope.resultado.push({titulo: ruta_archivo,
+                                 src: ruta_archivo,
+                                });
+      			$scope.$apply();
+          }
+        }
+      }
+    });  
+    
+  }
+});  
+  
+
+  
+    
+
 </script>
   
   
