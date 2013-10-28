@@ -30,6 +30,7 @@ module.exports = function (grunt) {
                         
                         		 "<div id='navegador'> \n" +
                         	   "  <a class='btn btn-success btn-xs' onclick='history.back()'>« Atrás</a> \n" +
+            								 "  <a class='btn btn-success btn-xs' href='app://./documentacion/index.html'>Inicio</a> \n" +
             								 "  <a class='btn btn-success btn-xs' onclick='history.forward()'>Adelante »</a> \n" +
             								 "  <a class='btn btn-info btn-xs derecha' href='app://./documentacion/buscar.html'>Buscar</a> \n" +
         										 "</div> \n" +

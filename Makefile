@@ -16,7 +16,8 @@ build:
 
 actualizar_documentacion:
 	rm -r -f src/documentacion
+	rm -rd -f mirror_documentacion
+	cp -rf /Users/hugoruscitti/vms/dokuwiki/documentacion ./mirror_documentacion/
 	cp -rf ./mirror_documentacion src/documentacion
 	cp src/buscar.html src/documentacion/
-	#mv ~/vms/dokuwiki/documentacion src/
 	grunt string-replace
