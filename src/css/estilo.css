@@ -110,3 +110,9 @@ div#content {
     background-color: #FFBABA;
     background-image: url('../../documentacion/images/4/49/Error.png');
 }
+
+
+.small {
+    color: gray;
+    font-size: small;
+}

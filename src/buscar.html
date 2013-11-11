@@ -36,6 +36,8 @@
       <ul ng-hide='resultado == []'>
         <li ng-repeat='r in resultado'>
         	<a ng-href='app://{{r.src}}'>{{r.titulo}}</a>
+          <p>
+          <span class='small'>{{r.src}}</span>
         </li>
       </ul>
       
@@ -52,6 +54,8 @@
 <script>
 var app = angular.module('app', []);
 var walk = require('walk');
+var fs = require('fs');
+var jquery = require('jquery');
 var files = [];
   
 // Hace foco en el campo de texto
@@ -91,21 +95,27 @@ app.controller("AppCtrl", function($scope) {
       
       for (var i=0; i<files.length; i++) {
         var ruta_archivo = files[i];
-        
+
         // Si es archivo .html
         if (/.html$/.test(ruta_archivo)) {
-          
-          // Si el texto a buscar está en el nombre del archivo.
-          if (ruta_archivo.match($scope.texto)) {
-            
-            
-            
-          	$scope.resultado.push({titulo: ruta_archivo,
-                                 src: ruta_archivo,
-                                });
-      			$scope.$apply();
-          }
+            var datos_como_buffer = fs.readFileSync(ruta_archivo);
+            var data = datos_como_buffer.toString();
+            var elemento = jquery("h1", data).get(0);
+            var texto_a_buscar = new RegExp($scope.texto, 'i');
+								
+            if (elemento) {
+					      var titulo = elemento.textContent;
+
+                // Busca solo en el titulo de la pagina
+                // Nota: cambiar 'titulo' por 'data' si se quiere buscar
+                // por contenido.
+                if (texto_a_buscar.test(titulo)) {
+					          $scope.resultado.push({titulo: titulo, src: ruta_archivo});
+				            $scope.$apply();
+				        }
+            }
         }
+
       }
     });  
     
