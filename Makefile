@@ -15,9 +15,13 @@ build:
 	grunt nodewebkit
 
 actualizar_documentacion:
-	rm -r -f src/documentacion
-	rm -rd -f mirror_documentacion
-	cp -rf /Users/hugoruscitti/vms/dokuwiki/documentacion ./mirror_documentacion/
+	rm -f export.tar.gz
+	rm -rf mirror_documentacion
+	rm -rf export
+	wget http://200.55.245.7:89/wiki/export.tar.gz
+ 	rm -r -f src/documentacion
+	tar xzf export.tar.gz
+	mv export mirror_documentacion
 	cp -rf ./mirror_documentacion src/documentacion
 	cp src/buscar.html src/documentacion/
 	grunt string-replace
