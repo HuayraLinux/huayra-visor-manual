@@ -19,7 +19,7 @@ actualizar_documentacion:
 	rm -rf mirror_documentacion
 	rm -rf export
 	wget http://200.55.245.7:89/wiki/export.tar.gz
- 	rm -r -f src/documentacion
+	rm -r -f src/documentacion
 	tar xzf export.tar.gz
 	mv export mirror_documentacion
 	cp -rf ./mirror_documentacion src/documentacion
