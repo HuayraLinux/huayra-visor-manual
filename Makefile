@@ -1,27 +1,25 @@
 all:
-	@echo "test                        Ejecuta una prueba de la aplicación sobre linux."
-	@echo "test_mac                    Ejecuta una prueba de la aplicación."
-	@echo "build                       Compila la aplicación para varias plataformas."
-	@echo "actualizar_documentacion    Actualiza la documentación desde el wiki."
+	@echo ""
+	@echo "  init          Instala las dependencias para usar el software."
+	@echo "  actualizar    Descargar una versión nueva del wiki offline."
+	@echo "  test_mac      Ejecuta la aplicación en mac-os."
+	@echo ""
+
+init:
+	npm install
+
+_descargar_dump:
+	rm -r -f export
+	rm -r -f export.tar.gz
+	wget http://200.55.245.7:89/wiki/export.tar.gz
+	tar xzf export.tar.gz
+
+actualizar: _descargar_dump
+	mv export documentacion
+	rm -r -f src/documentacion
+	mv documentacion src/
+	cp -r -f src/buscar.html src/documentacion/buscar.html
+	grunt string-replace
 
 test_mac:
-	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
-	open -a node-webkit.app src
-
-test:
-	./dist/node-webkit-v0.7.3-linux-ia32/nw src
-
-build:
-	grunt nodewebkit
-
-actualizar_documentacion:
-	rm -f export.tar.gz
-	rm -rf mirror_documentacion
-	rm -rf export
-	wget http://200.55.245.7:89/wiki/export.tar.gz
-	rm -r -f src/documentacion
-	tar xzf export.tar.gz
-	mv export mirror_documentacion
-	cp -rf ./mirror_documentacion src/documentacion
-	cp src/buscar.html src/documentacion/
-	grunt string-replace
+	open -a node-webkit src
