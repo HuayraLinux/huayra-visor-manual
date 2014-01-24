@@ -23,3 +23,9 @@ actualizar: _descargar_dump
 
 test_mac:
 	open -a node-webkit src
+
+test:
+	echo "..."
+
+install:
+	echo "..."
