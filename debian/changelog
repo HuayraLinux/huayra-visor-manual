@@ -1,3 +1,9 @@
+huayra-visor-manual (0.3) unstable; urgency=low
+
+  * Actualizando documentación del archivo debian/control
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 24 Jan 2014 15:37:23 +0100
+
 huayra-visor-manual (0.2) unstable; urgency=low
 
   * Eliminando archivos que no se utilizan. 
