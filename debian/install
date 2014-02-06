@@ -1,3 +1,4 @@
 src/* usr/share/huayra-visor-manual/src
 bin/huayra-visor-manual usr/bin/
 node_modules/* usr/share/huayra-visor-manual/node_modules
+huayra-visor-manual.desktop etc/xdg/autostart
