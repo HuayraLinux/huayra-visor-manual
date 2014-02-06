@@ -1,3 +1,16 @@
+huayra-visor-manual (0.5) unstable; urgency=low
+
+  * Agregando el lanzamiento del manual al iniciar el equipo.
+  * Actualizando la documentacion completa. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Thu, 06 Feb 2014 20:39:41 +0100
+
+huayra-visor-manual (0.4) unstable; urgency=low
+
+  * Quitando el modo depuración y agregando dependencias de node.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 27 Jan 2014 18:00:08 +0100
+
 huayra-visor-manual (0.3) unstable; urgency=low
 
   * Actualizando documentación del archivo debian/control

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Huayra-visor-manual
+Comment=Visor de manual
+Exec=/usr/bin/huayra-visor-manual
+Terminal=false
+Type=Application
+Icon=huayra-visor-manual
+Categories=Documentation;

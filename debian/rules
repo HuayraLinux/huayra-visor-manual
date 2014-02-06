@@ -19,3 +19,9 @@ export DH_OPTIONS
 
 %:
 	dh $@ 
+
+override_dh_shlibdeps:
+	@echo "..."
+
+override_dh_install:
+	dh_install
