@@ -1,62 +1,77 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	
+
 	<title>Index</title>
- 
-	<script type="text/javascript" charset="utf-8">    
-  var TOOLBAR = false;
-	var gui = require('nw.gui');
-	var ventana = gui.Window.get();
-	var url_home = "app://./documentacion/index.html";
-	var ventana_manual = undefined;
-	
-	ventana.on("close", function() {
-		gui.App.quit();
-	});
-		
-	var tray = new gui.Tray({title: '', icon: 'imagenes/tray.png' });
-	
-	var menu = new gui.Menu();
-	
-	menu.click = function() {
-    alert("Detectando click izquierdo!");
-	}
-	
-	function mostrar_ventana(url) {
-		
-		if (ventana_manual === undefined) {
-			ventana_manual = gui.Window.open(url, {toolbar: TOOLBAR});
-			ventana_manual.on("close", function() {
-				this.close(true);
-				ventana_manual = undefined;
-			});
-		} else {
-			ventana_manual.window.location = url;
-			ventana_manual.restore();
-		}
-	}
-    
-    
-	menu.append(new gui.MenuItem({
-		label: 'Mostrar',
-		click: function() {
-			mostrar_ventana(url_home);
-		}
-	}));
-	
-		
-	menu.append(new gui.MenuItem({
-		label: 'Salir',
-		click: function() {
-			gui.App.quit();
-		}
-	}));
-	
-	tray.menu = menu;
-	</script>
+
+	<script type="text/javascript" charset="utf-8">
+
+
+    var TOOLBAR = false;
+
+    var http = require('http');
+
+    var port = 33333; //some random port that is unlikely to be used by other apps
+    var url_home = "app://./documentacion/index.html";
+    var gui = require('nw.gui');
+    var ventana = gui.Window.get();
+    var doc = undefined;
+
+    crear_menu();
+
+    //Try to create server
+    var server = http.createServer(function (req, res) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('Prepros App');
+        mostrar_ventana();
+        //Show and maximize window on request
+    }).listen(port, '127.0.0.1', function(){
+      // ventana.window.location = url_home;
+    });
+
+
+    //Error means another instance is running
+    //So request the server to show previous instance
+    server.on('error', function(){
+        http.get('http://127.0.0.1:' + port, function() {
+            gui.App.quit();
+        });
+    });
+
+
+  function crear_menu() {
+    tray = new gui.Tray({title: '', icon: 'imagenes/tray.png' });
+
+    menu = new gui.Menu();
+
+    tray.on ('click',function() {
+      mostrar_ventana();
+    });
+
+    menu.append(new gui.MenuItem({
+      label: 'Salir',
+      click: function() {
+        gui.App.quit();
+      }
+    }));
+
+    tray.menu = menu;
+  }
+
+	function mostrar_ventana() {
+    if (doc === undefined) {
+      doc = gui.Window.open(url_home);
+      doc.on("close", function() {
+        this.hide();
+      });
+    }
+    doc.show();
+    doc.focus();
+    doc.requestAttention(true);
+  }
+  </script>
 </head>
-    
+
 <body>
     app.html
 </body>
