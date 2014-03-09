@@ -6,3 +6,4 @@ node_modules/jsdom/* usr/share/huayra-visor-manual/node_modules
 node_modules/q/* usr/share/huayra-visor-manual/node_modules
 node_modules/walk/* usr/share/huayra-visor-manual/node_modules
 debian/huayra-visor-manual.desktop etc/xdg/autostart
+debian/huayra-visor-manual.desktop usr/share/applications
