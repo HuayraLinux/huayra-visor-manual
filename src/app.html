@@ -5,27 +5,26 @@
     <title>Index</title>
 
     <script type="text/javascript" charset="utf-8">
-
-      var TOOLBAR = false;
-
+      var TOOLBAR = true;
       var http = require('http');
 
-      var port = 33333; //some random port that is unlikely to be used by other apps
+      var port = 33333;
       var url_home = "app://./documentacion/index.html";
       var gui = require('nw.gui');
       var ventana = gui.Window.get();
+			
       window.doc = undefined;
 
-      crear_menu();
 
-      //Try to create server
       var server = http.createServer(function (req, res) {
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Prepros App');
+        res.end('Singleton webserver');
+				console.log("Solititan la siguiente URL desde el webserver: " + req.url);
         mostrar_ventana(req.url);
-        //Show and maximize window on request
       }).listen(port, '127.0.0.1', function(){
-        // ventana.window.location = url_home;
+				// Cuando se inicia por primera vez.
+				console.log("Iniciando la aplicacion por primera vez.");
+        crear_menu();
       });
 
 
@@ -39,6 +38,8 @@
           var pagina = argumentos[0];
           url = url + "/" + pagina;
         }
+				
+				console.log("Iniciando la segunda sesión. Se cerrará la instancia usando la URL: " + url);
 
         http.get(url, function() {
           gui.App.quit();
@@ -73,26 +74,31 @@
       }
 
       function mostrar_ventana(url) {
-
-	if (url && url != '/undefined') {
+				
+				if (url && url != '/undefined')
            url = "app://./documentacion" + url;
-        } else {
+        else
            url = url_home;
-        }
-
-	// TODO: evitar abrir mas de una pantalla al mismo tiempo.
-        window.doc = gui.Window.open(url, {toolbar: TOOLBAR});
+				
+				// TODO: evitar abrir mas de una pantalla al mismo tiempo.
+				if (window.doc) {
+					window.doc.restore();
+					window.doc.show();
+				} else {
+        	window.doc = gui.Window.open(url, {toolbar: TOOLBAR});
+				}
 
         window.doc.on("close", function() {
-            this.hide();
+    			this.hide();
+					window.doc = undefined;
         });
 
         window.doc.on('loaded', function() {
-	   window.doc.restore();
-	   window.doc.show();
-	   window.doc.focus();
-	   window.doc.requestAttention(true);
-	});
+					window.doc.restore();
+					window.doc.show();
+					window.doc.focus();
+					window.doc.requestAttention(true);
+				});
 
       }
     </script>

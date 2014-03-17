@@ -3,6 +3,7 @@ all:
 	@echo "  init          Instala las dependencias para usar el software."
 	@echo "  actualizar    Descargar una versión nueva del wiki offline."
 	@echo "  test_mac      Ejecuta la aplicación en mac-os."
+	@echo "  build         Genera todas las versiones binarias."
 	@echo ""
 
 init:
@@ -26,6 +27,9 @@ test_mac:
 
 test:
 	echo "..."
+
+build:
+	grunt nodewebkit
 
 install:
 	echo "..."
