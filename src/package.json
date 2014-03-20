@@ -5,8 +5,8 @@
     "single-instance": false,
     "window": {
         "icon": "imagenes/icono.png",
-        "toolbar": true,
-        "show": true,
+        "toolbar": false,
+        "show": false,
         "min_width": 750,
         "min_height": 500,
         "position": "center"
