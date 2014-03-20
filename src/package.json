@@ -6,7 +6,7 @@
     "window": {
         "icon": "imagenes/icono.png",
         "toolbar": true,
-        "show": false,
+        "show": true,
         "min_width": 750,
         "min_height": 500,
         "position": "center"
