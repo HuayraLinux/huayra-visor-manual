@@ -91,7 +91,7 @@
 	// TODO: evitar abrir mas de una pantalla al mismo tiempo.
 	if (window.doc) {
 	  window.doc.restore();
-	  window.doc.show();
+	  window.doc.window.location = url();
 	} else {
 	  window.doc = gui.Window.open(url, {toolbar: TOOLBAR});
 	}
