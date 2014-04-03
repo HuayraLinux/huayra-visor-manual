@@ -22,8 +22,8 @@
         var url = req.url.replace("%000", "#");
         mostrar_ventana(url);
       }).listen(port, '127.0.0.1', function(){
-	// Cuando se inicia por primera vez.
-	console.log("Iniciando la aplicacion por primera vez.");
+        // Cuando se inicia por primera vez.
+        console.log("Iniciando la aplicacion por primera vez.");
         crear_menu();
 
         var argumentos = gui.App.argv;
@@ -31,12 +31,10 @@
         if (argumentos.length > 0) {
           var pagina = argumentos[0];
           var url = "/" + pagina;
-	  url = url.replace("%000", "#");
-
-	  mostrar_ventana(url);
+          url = url.replace("%000", "#");
+          mostrar_ventana(url);
         }
       });
-
 
       server.on('error', function(){
         var url = 'http://127.0.0.1:' + port;
@@ -47,7 +45,7 @@
           url = url + "/" + pagina;
         }
 
-	console.log("Iniciando la segunda sesión. Se cerrará la instancia usando la URL: " + url);
+        console.log("Iniciando la segunda sesión. Se cerrará la instancia usando la URL: " + url);
 
         http.get(url, function() {
           gui.App.quit();
@@ -83,31 +81,29 @@
 
       function mostrar_ventana(url) {
 
-	if (url && url != '/undefined')
-	  url = "app://./documentacion" + url;
-	else
-	  url = url_home;
+        if (url && url != '/undefined')
+          url = "app://./documentacion" + url;
+        else
+          url = url_home;
 
-	// TODO: evitar abrir mas de una pantalla al mismo tiempo.
-	if (window.doc) {
-	  window.doc.restore();
-	  window.doc.window.location = url();
-	} else {
-	  window.doc = gui.Window.open(url, {toolbar: TOOLBAR});
-	}
+        if (window.doc) {
+          window.doc.restore();
+	        window.doc.window.location = url;
+	      } else {
+	        window.doc = gui.Window.open(url, {toolbar: TOOLBAR});
+	      }
 
-	window.doc.on("close", function() {
-	  this.hide();
-	  window.doc = undefined;
-	});
+        window.doc.on("close", function() {
+          this.hide();
+          window.doc = undefined;
+        });
 
-	window.doc.on('loaded', function() {
-	  window.doc.restore();
-	  window.doc.show();
-	  window.doc.focus();
-	  window.doc.requestAttention(true);
-	});
-
+        window.doc.on('loaded', function() {
+          window.doc.restore();
+          window.doc.show();
+          window.doc.focus();
+          window.doc.requestAttention(true);
+        });
       }
     </script>
   </head>
