@@ -21,6 +21,9 @@ actualizar: _descargar_dump
 	mv documentacion src/
 	cp -r -f src/buscar.html src/documentacion/buscar.html
 	grunt string-replace
+	rm -rf src/documentacion/images/archive/
+	rm -rf src/documentacion/images/deleted/
+	rm -rf export.tar.gz
 
 test_mac:
 	open -a node-webkit src
