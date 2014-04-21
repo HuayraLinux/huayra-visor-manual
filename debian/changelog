@@ -1,3 +1,33 @@
+huayra-visor-manual (0.17) unstable; urgency=low
+
+  * Actualizando la documentación para que incluya el artículo de Preciosa.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 21 Apr 2014 18:39:55 +0200
+
+huayra-visor-manual (0.16) unstable; urgency=low
+
+  * Actualizando documentación en busca de reducir el tamaño del paquete.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 11 Apr 2014 21:25:20 +0200
+
+huayra-visor-manual (0.15) unstable; urgency=low
+
+  * Reduciendo tamaño del paquete. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 07 Apr 2014 18:20:29 +0200
+
+huayra-visor-manual (0.14) unstable; urgency=low
+
+  * Quitando la barra depuración y actualizando la documentación.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 07 Apr 2014 18:03:04 +0200
+
+huayra-visor-manual (0.13) unstable; urgency=low
+
+  * Arreglo sobre URLs y re-aparturas de ventanas.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Thu, 03 Apr 2014 20:45:50 +0200
+
 huayra-visor-manual (0.12) unstable; urgency=low
 
   * Actualizando documentación.
