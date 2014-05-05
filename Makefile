@@ -12,7 +12,8 @@ init:
 _descargar_dump:
 	rm -r -f export
 	rm -r -f export.tar.gz
-	wget http://200.55.245.7:89/wiki/export.tar.gz
+	#wget http://200.55.245.7:89/wiki/export.tar.gz
+	wget http://wiki.huayragnulinux.com.ar/export.tar.gz
 	tar xzf export.tar.gz
 
 actualizar: _descargar_dump
@@ -24,6 +25,7 @@ actualizar: _descargar_dump
 	rm -rf src/documentacion/images/archive/
 	rm -rf src/documentacion/images/deleted/
 	rm -rf export.tar.gz
+	
 
 test_mac:
 	open -a node-webkit src
