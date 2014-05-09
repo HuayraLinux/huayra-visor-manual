@@ -17,15 +17,17 @@ _descargar_dump:
 	tar xzf export.tar.gz
 
 actualizar: _descargar_dump
-	mv export documentacion
+	rm -r -f documentacion
 	rm -r -f src/documentacion
+	mv export documentacion
 	mv documentacion src/
 	cp -r -f src/buscar.html src/documentacion/buscar.html
 	grunt string-replace
-	rm -rf src/documentacion/images/archive/
-	rm -rf src/documentacion/images/deleted/
-	rm -rf export.tar.gz
-	
+	rm -r -f src/documentacion/images/deleted
+	rm -r -f src/documentacion/images/temp/
+	rm -r -f src/documentacion/images/archive/
+	python reducir_dump.py
+	rm -r -f export.tar.gz
 
 test_mac:
 	open -a node-webkit src
