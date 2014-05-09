@@ -123,7 +123,7 @@ def main():
 
     print "Resultado:"
     print ""
-    print "   Miniaturas que se han borrado:", cantidad_archivos_borrados
+    print "   Miniaturas borradas:", cantidad_archivos_borrados
     print "   Miniaturas que se conservan:", cantidad_archivos_preservados
 
 if __name__ == '__main__':
