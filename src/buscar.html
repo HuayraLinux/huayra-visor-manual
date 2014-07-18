@@ -55,7 +55,6 @@
 var app = angular.module('app', []);
 var walk = require('walk');
 var fs = require('fs');
-var jquery = require('jquery');
 var files = [];
   
 // Hace foco en el campo de texto
@@ -100,11 +99,14 @@ app.controller("AppCtrl", function($scope) {
         if (/.html$/.test(ruta_archivo)) {
             var datos_como_buffer = fs.readFileSync(ruta_archivo);
             var data = datos_como_buffer.toString();
-            var elemento = jquery("h1", data).get(0);
             var texto_a_buscar = new RegExp($scope.texto, 'i');
+
+            var elementos = data.match(/<h1>(.*?)<\/h1>/g).map(function(val){
+                 return val.replace(/<\/?h1>/g,'');
+            });
 								
-            if (elemento) {
-					      var titulo = elemento.textContent;
+            if (elementos.length > 0) {
+					      var titulo = elementos[0];
 
                 // Busca solo en el titulo de la pagina
                 // Nota: cambiar 'titulo' por 'data' si se quiere buscar

@@ -1,3 +1,45 @@
+huayra-visor-manual (0.25) unstable; urgency=low
+
+  * Arreglo menor en el buscador. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 18 Jul 2014 21:10:21 +0200
+
+huayra-visor-manual (0.24) unstable; urgency=low
+
+  * Quitando jsdom. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 18 Jul 2014 19:49:45 +0200
+
+huayra-visor-manual (0.23) unstable; urgency=low
+
+  * Quitando jsquery como dependencia del paquete.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 18 Jul 2014 19:11:39 +0200
+
+huayra-visor-manual (0.22) unstable; urgency=low
+
+  * Haciendo que el paquete funcione en toda arquitectura. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Thu, 17 Jul 2014 20:27:32 +0200
+
+huayra-visor-manual (0.21) unstable; urgency=low
+
+  * Actualizando la documentación. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 13 Jun 2014 15:33:59 +0200
+
+huayra-visor-manual (0.20) unstable; urgency=low
+
+  * Actualización menor... 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Thu, 15 May 2014 19:30:18 +0200
+
+huayra-visor-manual (0.19) unstable; urgency=low
+
+  * Reduciendo tamaño con el nuevo script que optimiza miniaturas.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 09 May 2014 17:40:44 +0200
+
 huayra-visor-manual (0.17) unstable; urgency=low
 
   * Actualizando la documentación para que incluya el artículo de Preciosa.

@@ -1,8 +1,6 @@
 src/* usr/share/huayra-visor-manual/src
 bin/huayra-visor-manual usr/bin/
 node_modules/async/* usr/share/huayra-visor-manual/node_modules/async
-node_modules/jquery/* usr/share/huayra-visor-manual/node_modules/jquery
-node_modules/jsdom/* usr/share/huayra-visor-manual/node_modules/jsdom
 node_modules/q/* usr/share/huayra-visor-manual/node_modules/q
 node_modules/walk/* usr/share/huayra-visor-manual/node_modules/walk
 debian/huayra-visor-manual.desktop etc/xdg/autostart
