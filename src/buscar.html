@@ -101,20 +101,26 @@ app.controller("AppCtrl", function($scope) {
             var data = datos_como_buffer.toString();
             var texto_a_buscar = new RegExp($scope.texto, 'i');
 
-            var elementos = data.match(/<h1>(.*?)<\/h1>/g).map(function(val){
-                 return val.replace(/<\/?h1>/g,'');
-            });
-								
-            if (elementos.length > 0) {
-					      var titulo = elementos[0];
+            var result = data.match(/<h1.*>(.*?)<\/h1>/g);
 
-                // Busca solo en el titulo de la pagina
-                // Nota: cambiar 'titulo' por 'data' si se quiere buscar
-                // por contenido.
-                if (texto_a_buscar.test(titulo)) {
-					          $scope.resultado.push({titulo: titulo, src: ruta_archivo});
-				            $scope.$apply();
-				        }
+            if (result) {
+              var elementos = result.map(function(val){
+                var div = document.createElement('div');
+                div.innerHTML = val;
+                return div.textContent;
+              });
+                  
+              if (elementos.length > 0) {
+                  var titulo = elementos[0];
+
+                  // Busca solo en el titulo de la pagina
+                  // Nota: cambiar 'titulo' por 'data' si se quiere buscar
+                  // por contenido.
+                  if (texto_a_buscar.test(titulo)) {
+                      $scope.resultado.push({titulo: titulo, src: ruta_archivo});
+                      $scope.$apply();
+                  }
+              }
             }
         }
 
