@@ -12,7 +12,7 @@
       var url_home = "app://./documentacion/index.html";
       var gui = require('nw.gui');
       var ventana = gui.Window.get();
-			
+
       window.doc = undefined;
 
       var server = http.createServer(function (req, res) {
@@ -54,7 +54,51 @@
 
 
       function crear_menu() {
-        tray = new gui.Tray({title: '', icon: 'imagenes/tray.png' });
+        var prefix;
+        tray = new gui.Tray({title: '', icon: 'imagenes/tray.png'});
+
+        function obtener_prefijo_iconos(callback) {
+          var comando = spawn('gsettings', ['get', 'org.mate.interface', 'icon-theme']);
+
+          comando.stdout.on('data', function (data) {
+            data = data.toString().trim().replace(/\'/g, '');
+            var path = "/usr/share/icons/" + data + '/22x22/apps/';
+
+            var exists = fs.existsSync(path);
+
+            if (exists) {
+              callback(null, path);
+            } else {
+              callback({error: "No se encontro alguno de los iconos en " + path + ". Usando iconos por omision."}, null);
+            }
+          });
+
+          comando.stderr.on('data', function (reason) {
+            callback(reason, null);
+          });
+
+          comando.on('close', function (code) {
+
+          });
+        }
+
+        /**
+         * Actualiza el icono de la barra de notificaciones.
+         */
+        function update_image() {
+
+          obtener_prefijo_iconos(function(err, data) {
+            if (err)
+              prefix = "imagenes/";
+            else
+              prefix = data;
+          });
+
+          tray.icon = prefix + "help.png";
+          setTimeout(update_image, 2000);
+        }
+
+        update_image();
 
         menu = new gui.Menu();
 
