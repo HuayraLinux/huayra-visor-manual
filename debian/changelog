@@ -1,3 +1,9 @@
+huayra-visor-manual (0.29) unstable; urgency=low
+
+  * Agregando la dependencia de node-webkit.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Thu, 22 Jan 2015 19:22:52 +0100
+
 huayra-visor-manual (0.28) unstable; urgency=low
 
   * Haciendo que el icono de la aplicación se cargue desde el tema actual. 

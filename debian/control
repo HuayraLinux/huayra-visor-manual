@@ -10,7 +10,7 @@ Homepage: https://github.com/HuayraLinux/huayra-visor-manual
 
 Package: huayra-visor-manual
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, node-webkit
 Description: Manual de huayra gnu-linux junto a un visor.
  El visor de manual huayra contiene todo el manual de usuario
  del sistema operativo junto a un visor que nos permite navegarlo
