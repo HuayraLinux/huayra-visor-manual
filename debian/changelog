@@ -1,3 +1,9 @@
+huayra-visor-manual (0.30) unstable; urgency=low
+
+  * Actualizando documento a un dump nuevo. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 23 Jan 2015 19:55:58 +0100
+
 huayra-visor-manual (0.29) unstable; urgency=low
 
   * Agregando la dependencia de node-webkit.
