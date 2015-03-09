@@ -43,7 +43,7 @@ module.exports = function (grunt) {
              }  
     });
 
-    grunt.loadNpmTasks('grunt-node-webkit-builder');
+    //grunt.loadNpmTasks('grunt-node-webkit-builder');
     grunt.loadNpmTasks('grunt-string-replace');
  }
 

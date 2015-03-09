@@ -1,3 +1,9 @@
+huayra-visor-manual (0.32) unstable; urgency=low
+
+  * Arreglo menor en los tutoriales. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 09 Mar 2015 19:37:49 +0100
+
 huayra-visor-manual (0.31) unstable; urgency=low
 
   * Actualizando documento a un dump nuevo. 
