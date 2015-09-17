@@ -1,8 +1,4 @@
 src/* usr/share/huayra-visor-manual/src
 bin/huayra-visor-manual usr/bin/
-node_modules/async/* usr/share/huayra-visor-manual/node_modules/async
-node_modules/q/* usr/share/huayra-visor-manual/node_modules/q
-node_modules/walk/* usr/share/huayra-visor-manual/node_modules/walk
-debian/huayra-visor-manual.desktop etc/xdg/autostart
 debian/huayra-visor-manual.desktop usr/share/applications
 debian/huayra-visor-manual.svg /usr/share/icons/hicolor/scalable/apps
