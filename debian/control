@@ -2,16 +2,18 @@ Source: huayra-visor-manual
 Section: doc
 Priority: extra
 Maintainer: Hugo Ruscitti <hugoruscitti@gmail.com>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 8.0.0), node-grunt-cli (>= 0.1.13),
+        wget (>= 1.16), npm (>= 1.4.21), node-async, node-q
+Standards-Version: 3.9.6
 Homepage: https://github.com/HuayraLinux/huayra-visor-manual
-#Vcs-Git: git://git.debian.org/collab-maint/huayra-visor-manual.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/huayra-visor-manual.git;a=summary
 
 Package: huayra-visor-manual
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, node-webkit
+Depends: ${shlibs:Depends}, ${misc:Depends}, node-webkit,
+	node-async, node-q, node-walk
 Description: Manual de huayra gnu-linux junto a un visor.
  El visor de manual huayra contiene todo el manual de usuario
  del sistema operativo junto a un visor que nos permite navegarlo
  y realizar búsquedas.
+
+

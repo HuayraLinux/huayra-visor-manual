@@ -1,3 +1,13 @@
+huayra-visor-manual (0.4) unstable; urgency=low
+
+  * Es posible compilarlo con pbuilder/pdebuild sin previo trabajo
+  * Ahora las dependencias se instalan de los repositorios y no
+  a traves de `npm install`.
+  * Agrego targets en el Makefile
+  * Agrego archivo debian/links
+
+ -- Mauro <mauro@sdf.org>  Thu, 17 Sep 2015 17:11:15 -0300
+
 huayra-visor-manual (0.32) unstable; urgency=low
 
   * Arreglo menor en los tutoriales. 

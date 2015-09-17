@@ -6,6 +6,8 @@ all:
 	@echo "  build         Genera todas las versiones binarias."
 	@echo ""
 
+all: actualizar build
+
 init:
 	npm install
 
@@ -36,7 +38,13 @@ test:
 	echo "..."
 
 build:
-	grunt nodewebkit
+	grunt
 
+clean:
+	rm -fr documentacion
+	rm -fr src/documentacion
+	rm -fr node_modules
+	rm -fr export.tar.gz
+	
 install:
 	echo "..."
