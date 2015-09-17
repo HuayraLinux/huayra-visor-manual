@@ -6,10 +6,11 @@ all:
 	@echo "  build         Genera todas las versiones binarias."
 	@echo ""
 
-all: actualizar build
+all: init actualizar build
 
 init:
-	npm install
+	# npm install # con esto descargamos deps de package.json
+	npm install grunt # que no esta empaquetado en .deb
 
 _descargar_dump:
 	rm -r -f export
