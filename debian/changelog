@@ -1,4 +1,4 @@
-huayra-visor-manual (0.4) unstable; urgency=low
+huayra-visor-manual (0.40) unstable; urgency=low
 
   * Es posible compilarlo con pbuilder/pdebuild sin previo trabajo
   * Ahora las dependencias se instalan de los repositorios y no
