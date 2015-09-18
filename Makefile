@@ -9,8 +9,8 @@ all:
 all: init actualizar build
 
 init:
-	# npm install # con esto descargamos deps de package.json
-	npm install grunt # que no esta empaquetado en .deb
+	# npm install
+	npm install grunt grunt-string-replace
 
 _descargar_dump:
 	rm -r -f export
