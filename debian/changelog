@@ -1,3 +1,9 @@
+huayra-visor-manual (0.41) unstable; urgency=low
+
+  * Actualizando paquete.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 21 Sep 2015 15:34:28 +0200
+
 huayra-visor-manual (0.40) unstable; urgency=low
 
   * Es posible compilarlo con pbuilder/pdebuild sin previo trabajo
