@@ -1,2 +1,2 @@
 #!/bin/bash
-nw /usr/share/huayra-visor-manual/src "$@"
+NODE_PATH=/usr/lib/nodejs nw /usr/share/huayra-visor-manual/src "$@"

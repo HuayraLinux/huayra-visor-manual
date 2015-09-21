@@ -29,7 +29,7 @@ actualizar: _descargar_dump
 	rm -r -f src/documentacion/images/deleted
 	rm -r -f src/documentacion/images/temp/
 	rm -r -f src/documentacion/images/archive/
-	python reducir_dump.py
+	#python reducir_dump.py
 	rm -r -f export.tar.gz
 
 test_mac:
