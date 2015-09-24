@@ -9,11 +9,11 @@ all:
 	@echo ""
 
 
-full: init clean actualizar build
+full: clean init actualizar
 
 init:
 	# npm install
-	npm install grunt grunt-string-replace
+	npm install grunt-cli grunt grunt-string-replace
 
 _descargar_dump:
 	rm -r -f export
@@ -32,7 +32,7 @@ actualizar: _descargar_dump
 	rm -r -f src/documentacion/images/deleted
 	rm -r -f src/documentacion/images/temp/
 	rm -r -f src/documentacion/images/archive/
-	#python reducir_dump.py
+	python reducir_dump.py
 	rm -r -f export.tar.gz
 
 test_mac:
@@ -40,9 +40,6 @@ test_mac:
 
 test:
 	echo "..."
-
-build:
-	grunt
 
 clean:
 	rm -fr documentacion
