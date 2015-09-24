@@ -3,10 +3,13 @@ all:
 	@echo "  init          Instala las dependencias para usar el software."
 	@echo "  actualizar    Descargar una versión nueva del wiki offline."
 	@echo "  test_mac      Ejecuta la aplicación en mac-os."
-	@echo "  build         Genera todas las versiones binarias."
+	@echo "  build         Compila la descarga actual."
+	@echo ""
+	@echo "  full          Actualiza y genera todo el paquete para distribuir."
 	@echo ""
 
-all: init actualizar build
+
+full: init clean actualizar build
 
 init:
 	# npm install
