@@ -14,15 +14,21 @@ full: clean init actualizar
 init:
 	# npm install
 	npm install grunt-cli grunt grunt-string-replace
+	pip install beautifulsoup4
 
 _descargar_dump:
 	rm -r -f export
 	rm -r -f export.tar.gz
 	#wget http://200.55.245.7:89/wiki/export.tar.gz
 	wget http://wiki.huayragnulinux.com.ar/export.tar.gz
+
+_descomprimir_dump:
 	tar xzf export.tar.gz
 
-actualizar: _descargar_dump
+actualizar: _descargar_dump _descomprimir_dump _mover_docs _reducir_dump _borrar_export
+	@echo "done"
+
+_mover_docs:
 	rm -r -f documentacion
 	rm -r -f src/documentacion
 	mv export documentacion
@@ -32,7 +38,11 @@ actualizar: _descargar_dump
 	rm -r -f src/documentacion/images/deleted
 	rm -r -f src/documentacion/images/temp/
 	rm -r -f src/documentacion/images/archive/
+
+_reducir_dump:
 	python reducir_dump.py
+
+_borrar_export:
 	rm -r -f export.tar.gz
 
 test_mac:

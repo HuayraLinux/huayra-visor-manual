@@ -2,6 +2,8 @@
 import re
 import os
 
+from bs4 import BeautifulSoup
+
 def find(path):
     """Similar al comando find, pero retorna un generador."""
     for root, folders, files in os.walk(path):
@@ -12,7 +14,7 @@ def find(path):
 
 def listar_archivos_html():
     "Emite un listado con la ruta completa a todos los archivos .html"
-    for file in find('src/documentacion/articles'):
+    for file in find('src/documentacion'):
         if file.endswith('.html'):
             yield file
 
@@ -45,12 +47,12 @@ def eliminar_atributos_srcset(texto):
 
         "texto <img src='algo.jpg' >b"
     """
-    return re.sub(r'srcset=".[^"]*"', r"", texto)
+    return re.sub(r'srcset=".[^"]*"', r"srcset=''", texto)
 
 def obtener_solo_nombre_de_imagenes(lista_de_archivos):
     return [os.path.basename(p) for p in lista_de_archivos if p.endswith('.jpg') or p.endswith('.png')]
 
-def obtener_imagenes_utilizadas_en_texto_html(texto):
+def obtener_imagenes_utilizadas_en_texto_html(texto, nombre_archivo):
     """Retorna una lista de nombres de imágenes utilizadas
     en un texto html.
 
@@ -64,7 +66,10 @@ def obtener_imagenes_utilizadas_en_texto_html(texto):
         ['algo.jpg']
 
     """
-    rutas = re.findall(r'src="(.[^"]*)"', texto)
+    soup = BeautifulSoup(texto, "lxml")
+    tags = soup.findAll('img')
+
+    rutas = [x.get('src') for x in tags]
 
     solo_nombres = obtener_solo_nombre_de_imagenes(rutas)
     return solo_nombres
@@ -74,7 +79,7 @@ def eliminar_srcset_de_archivo(ruta_a_archivo):
     contenido = archivo.read()
     archivo.close()
 
-    archivo_nuevo = open(ruta_a_archivo + "nuevo", 'wt')
+    archivo_nuevo = open(ruta_a_archivo, 'wt')
     contenido_nuevo = eliminar_atributos_srcset(contenido)
     archivo_nuevo.write(contenido_nuevo)
     archivo_nuevo.close()
@@ -103,7 +108,7 @@ def main():
     for archivo in archivos:
         a = open(archivo, 'rt')
         contenido = a.read()
-        solo_nombres_imagenes_a_preservar += obtener_imagenes_utilizadas_en_texto_html(contenido)
+        solo_nombres_imagenes_a_preservar += obtener_imagenes_utilizadas_en_texto_html(contenido, archivo)
         a.close()
 
     solo_nombres_de_thumbs_en_disco = set(solo_nombres_de_thumbs_en_disco)
@@ -114,10 +119,12 @@ def main():
     for imagen in listar_imagenes_en_disco():
         solo_nombre = os.path.basename(imagen)
 
-        if solo_nombre in nombres_a_eliminar:
+        if solo_nombre in nombres_a_eliminar and not solo_nombre in solo_nombres_imagenes_a_preservar:
+
             os.remove(imagen)
             cantidad_archivos_borrados += 1
         else:
+
             cantidad_archivos_preservados +=1
 
 
