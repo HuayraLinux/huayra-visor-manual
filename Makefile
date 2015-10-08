@@ -14,7 +14,7 @@ full: clean init actualizar
 init:
 	# npm install
 	npm install grunt-cli grunt grunt-string-replace
-	pip install beautifulsoup4
+	sudo pip install beautifulsoup4
 
 _descargar_dump:
 	rm -r -f export
