@@ -14,7 +14,7 @@ full: clean init actualizar
 init:
 	# npm install
 	npm install grunt-cli grunt grunt-string-replace
-	sudo pip install beautifulsoup4
+	#sudo pip install beautifulsoup4
 
 _descargar_dump:
 	rm -r -f export
@@ -25,8 +25,11 @@ _descargar_dump:
 _descomprimir_dump:
 	tar xzf export.tar.gz
 
-actualizar: _descargar_dump _descomprimir_dump _mover_docs _reducir_dump _borrar_export
+actualizar: _descargar_dump _descomprimir_dump _borrar_imagenes_duplicadas _mover_docs _reducir_dump _borrar_export
 	@echo "done"
+
+_borrar_imagenes_duplicadas:
+	python ./borrar_imagenes_duplicadas.py
 
 _mover_docs:
 	rm -r -f documentacion

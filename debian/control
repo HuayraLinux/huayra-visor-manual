@@ -2,7 +2,7 @@ Source: huayra-visor-manual
 Section: doc
 Priority: extra
 Maintainer: Hugo Ruscitti <hugoruscitti@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), node-grunt-cli (>= 0.1.13),
+Build-Depends: debhelper (>= 8.0.0), node-grunt-cli (>= 0.1.13), python-bs4, python-lxml,
         wget (>= 1.16), npm (>= 1.4.21), node-async, node-q, nodejs-legacy, nodejs
 Standards-Version: 3.9.6
 Homepage: https://github.com/HuayraLinux/huayra-visor-manual
