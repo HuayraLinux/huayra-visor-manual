@@ -1,3 +1,9 @@
+huayra-visor-manual (1.2.0) unstable; urgency=low
+
+  * Reparando el script para excluir imagenes duplicadas.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Wed, 04 Nov 2015 18:35:24 +0100
+
 huayra-visor-manual (1.1.0) unstable; urgency=low
 
   * Reparando el script que eliminaba miniaturas de más.
