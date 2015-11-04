@@ -99,6 +99,10 @@ def main():
     thumbs_en_disco = listar_imagenes_en_disco()
     solo_nombres_de_thumbs_en_disco = obtener_solo_nombre_de_imagenes(thumbs_en_disco)
 
+    a = list(thumbs_en_disco)
+    a.sort()
+    print a
+
     # Recorre todos los archivos HTML buscando los nombres de archivos
     # que se tienen que preservar.
     solo_nombres_imagenes_a_preservar = []
