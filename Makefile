@@ -25,8 +25,11 @@ _descargar_dump:
 _descomprimir_dump:
 	tar xzf export.tar.gz
 
-actualizar: _descargar_dump _descomprimir_dump _borrar_imagenes_duplicadas _mover_docs _reducir_dump _borrar_export
+actualizar: _descargar_dump _descomprimir_dump _borrar_imagenes_duplicadas _mover_docs _reducir_dump _borrar_export _limpiar_directorios_vacios
 	@echo "done"
+
+_limpiar_directorios_vacios:
+	find src/documentacion -type d -empty -delete
 
 _borrar_imagenes_duplicadas:
 	python ./borrar_imagenes_duplicadas.py
