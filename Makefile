@@ -1,11 +1,13 @@
+N=[0m
+V=[01;32m
+
 all:
 	@echo ""
-	@echo "  init          Instala las dependencias para usar el software."
-	@echo "  actualizar    Descargar una versión nueva del wiki offline."
-	@echo "  test_mac      Ejecuta la aplicación en mac-os."
-	@echo "  build         Compila la descarga actual."
+	@echo "  $(V)init$(N)          Instala las dependencias para usar el software."
+	@echo "  $(V)actualizar$(N)    Descargar una versión nueva del wiki offline."
+	@echo "  $(V)test_mac$(N)      Ejecuta la aplicación en mac-os."
 	@echo ""
-	@echo "  full          Actualiza y genera todo el paquete para distribuir."
+	@echo "  $(V)full$(N)         Actualiza y genera todo el paquete para distribuir."
 	@echo ""
 
 
@@ -17,8 +19,8 @@ init:
 	#sudo pip install beautifulsoup4
 
 _descargar_dump:
-	rm -r -f export
-	rm -r -f export.tar.gz
+	@rm -r -f export
+	@rm -r -f export.tar.gz
 	#wget http://200.55.245.7:89/wiki/export.tar.gz
 	wget http://wiki.huayragnulinux.com.ar/export.tar.gz
 
@@ -62,6 +64,6 @@ clean:
 	rm -fr src/documentacion
 	rm -fr node_modules
 	rm -fr export.tar.gz
-	
+
 install:
 	echo "..."
