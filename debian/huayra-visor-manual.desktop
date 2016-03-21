@@ -6,3 +6,4 @@ Terminal=false
 Type=Application
 Icon=huayra-visor-manual
 Categories=Documentation;Huayra
+MimeType=x-scheme-handler/ghelp;x-scheme-handler/help;x-scheme-handler/info;x-scheme-handler/man;

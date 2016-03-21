@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+
+import re
+import subprocess as sp
+
+pages_by_cat_dict = {
+           'terminal': 'articles/p/r/o/Programaci%C3%B3n.html#Terminal',
+           'archivos': 'articles/a/r/c/Archivos_y_Carpetas.html'
+}
+
+cat_by_app_dict = {
+                'terminal' : 'term',
+                'archivos' : 'caja'
+}
+
+
+
+def get_window_id():
+    window_id = None
+    output = sp.check_output("xprop -root", shell=True)
+    active_window = filter(lambda l: l.startswith("_NET_ACTIVE_WINDOW"), output.split("\n"))
+    if active_window:
+        window_id = re.findall("0x.[^']*", active_window[0])[0]
+
+    return window_id
+
+
+def get_window_class(id):
+    window_class = None
+    if id:
+        window_class = None
+        output = sp.check_output("xprop -id {0}".format(id), shell=True)
+        wm_class = filter(lambda l: l.startswith("WM_CLASS"), output.split("\n"))
+        if wm_class:
+           window_class = re.findall(".* = (.*)", wm_class[0])[0]
+
+    return window_class
+
+
+def get_page_by_class(cls):
+"""
+No es el codigo mas elegante pero los ravioles se encargaron de
+quitarme la poca vida que me quedaba disponible en un dia Lunes, gris, como el de hoy.
+"""
+    url = None
+    if cls:
+        cls =  re.sub("[^\w -]", "", cls).split(" ")
+
+        for cat in cat_by_app_dict:
+            test_app = filter(lambda c: cat_by_app_dict[cat] in c, cls)
+            if len( test_app ) > 0:
+                url = pages_by_cat_dict[cat]
+                break
+
+    return url
+
+
+def main():
+    window_id = get_window_id()
+    window_class = get_window_class(window_id)
+    help_page = get_page_by_class(window_class)
+
+    if help_page:
+        sp.call(["/usr/bin/huayra-visor-manual", help_page])
+    else:
+        sp.call(["/usr/bin/huayra-visor-manual"])
+
+
+if __name__ == "__main__":
+   main()
