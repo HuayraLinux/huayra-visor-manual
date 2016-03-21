@@ -1,3 +1,11 @@
+huayra-visor-manual (1.3.1) unstable; urgency=low
+
+  * Agrego MimeType al archivo `huayra-visor-manual.desktop`
+  * Agrego `huayra-help` que descubre la clase de la aplicacion desde
+    donde esta siendo invocada la ayuda
+
+ -- Mauro <mauro@sdf.org>  Mon, 21 Mar 2016 14:38:26 -0300
+
 huayra-visor-manual (1.3.0) unstable; urgency=low
 
   * Simplificando el uso de la aplicación, ahora sin systray.
