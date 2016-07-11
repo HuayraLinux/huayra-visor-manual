@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
         </dd><dd>1- ALT + F2 (también podemos abrir la aplicación desde el <a href="../../../../articles/m/e/n/Men%C3%BA_Huayra.html" title="Menú Huayra">Menú Huayra</a> &gt;&gt; <b>Accesorios</b>.
         </dd><dd>2- Escribir XOURNAL
         """
-        imagenes = obtener_imagenes_utilizadas_en_texto_html(texto_de_prueba)
+        imagenes = obtener_imagenes_utilizadas_en_texto_html(texto_de_prueba, "demo.html")
         self.assertIn("256px-Xournal.jpg", imagenes)
 
     def testListaMinuaturasDelDisco(self):
