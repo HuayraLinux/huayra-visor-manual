@@ -16,7 +16,9 @@ paquete .deb que incluye huayralinux.
 
 Luego tienes que clonar este repositorio y ejecutar estos comandos:
 
-  cd huayra-visor-manual
-  npm install -g grunt-cli
-  make full
-  nw src
+```
+cd huayra-visor-manual
+npm install -g grunt-cli
+make full
+nw src
+```

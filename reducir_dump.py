@@ -130,7 +130,6 @@ def main():
 
     a = list(thumbs_en_disco)
     a.sort()
-    print a
 
     # Recorre todos los archivos HTML buscando los nombres de archivos
     # que se tienen que preservar.
