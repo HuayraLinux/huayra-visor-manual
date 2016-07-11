@@ -3,6 +3,8 @@ import re
 import os
 
 from bs4 import BeautifulSoup
+from xml.etree import ElementTree
+from xml.etree.ElementTree import ParseError
 
 def find(path):
     """Similar al comando find, pero retorna un generador."""
@@ -49,6 +51,31 @@ def eliminar_atributos_srcset(texto):
     """
     return re.sub(r'srcset=".[^"]*"', r"srcset=''", texto)
 
+def quitar_template(archivo):
+    """Quita el texto extra (el templating de la wiki)
+       dejando sólo el <div id="content">
+    """
+    try:
+        ElementTree.register_namespace('', "http://www.w3.org/1999/xhtml")
+        ns      = "{http://www.w3.org/1999/xhtml}"
+        tree    = ElementTree.parse(archivo)
+        title   = tree.find("{0}head/{0}title".format(ns))
+        style   = tree.find("{0}head/{0}style".format(ns))
+        content = tree.find(".//*[@id=\"content\"]")
+        if content is None:
+            tree.write(archivo)
+            return
+        new_doc = ElementTree.ElementTree(ElementTree.Element("html"))
+        root    = new_doc.getroot()
+        head    = ElementTree.SubElement(root, "head")
+        body    = ElementTree.SubElement(root, "body")
+        head.extend([title, style])
+        body.append(content)
+        new_doc.write(archivo)
+    except ParseError as error:
+        print "[HTML] Error procesando", archivo, error
+    
+
 def obtener_solo_nombre_de_imagenes(lista_de_archivos):
     return [os.path.basename(p) for p in lista_de_archivos if p.endswith('.jpg') or p.endswith('.png')]
 
@@ -91,7 +118,9 @@ def main():
 
     # Elimina todos los 'srcset' de los archivos HTML
     for archivo in listar_archivos_html():
+        print "[HTML] Procesando", archivo 
         eliminar_srcset_de_archivo(archivo)
+        quitar_template(archivo)
 
     # Obtiene todas las imagenes miniatura que están en el
     # disco y sus nombres.
