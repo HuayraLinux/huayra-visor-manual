@@ -1,3 +1,4 @@
+VERSION=1.3.0
 NOMBRE="huayra-visor-manual"
 
 N=[0m
@@ -8,11 +9,14 @@ L=[01;30m
 
 all:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}${NOMBRE}${N}"
+	@echo "${B}Comandos disponibles para ${G}${NOMBRE} - ${VERSION}${N}"
 	@echo ""
 	@echo "  $(G)init$(N)          Instala las dependencias para usar el software."
 	@echo "  $(G)actualizar$(N)    Descargar una versión nueva del wiki offline."
 	@echo "  $(G)test_mac$(N)      Ejecuta la aplicación en mac-os."
+	@echo ""
+	@echo "  $(G)patch_version$(N)         Incrementa la versión."
+	@echo "  $(G)sincronizar_version$(N)   Sincroniza la versión con el servidor."
 	@echo ""
 	@echo "  $(G)full$(N)         Actualiza y genera todo el paquete para distribuir."
 	@echo ""
@@ -70,6 +74,18 @@ test_mac:
 
 test:
 	echo "..."
+
+version:
+	@bumpversion patch --current-version ${VERSION} package.json public/package.json Makefile --list
+	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
+	@echo "make subir_version"
+
+subir_version:
+	git commit -am 'release ${VERSION}'
+	git tag '${VERSION}'
+	git push
+	git push --all
+	git push --tags
 
 clean:
 	@echo "${G}limpiando archivos ...${N}"
