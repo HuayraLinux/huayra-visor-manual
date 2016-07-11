@@ -22,9 +22,7 @@ full: clean init actualizar
 
 init:
 	@echo "${G}instalando dependencias ...${N}"
-	# npm install
-	npm install grunt-cli grunt grunt-string-replace
-	#sudo pip install beautifulsoup4
+	@npm install
 
 _descargar_dump:
 	@echo "${G}descargando dump desde el wiki de huayra ...${N}"
