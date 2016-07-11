@@ -76,7 +76,7 @@ test:
 	echo "..."
 
 patch_version:
-	@bumpversion patch --current-version ${VERSION} package.json public/package.json Makefile --list
+	@bumpversion patch --current-version ${VERSION} Makefile --list
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo "make subir_version"
 
