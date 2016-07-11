@@ -1,57 +1,71 @@
+NOMBRE="huayra-visor-manual"
+
 N=[0m
-V=[01;32m
+G=[01;32m
+Y=[01;33m
+B=[01;34m
+L=[01;30m
 
 all:
 	@echo ""
-	@echo "  $(V)init$(N)          Instala las dependencias para usar el software."
-	@echo "  $(V)actualizar$(N)    Descargar una versión nueva del wiki offline."
-	@echo "  $(V)test_mac$(N)      Ejecuta la aplicación en mac-os."
+	@echo "${B}Comandos disponibles para ${G}${NOMBRE}${N}"
 	@echo ""
-	@echo "  $(V)full$(N)         Actualiza y genera todo el paquete para distribuir."
+	@echo "  $(G)init$(N)          Instala las dependencias para usar el software."
+	@echo "  $(G)actualizar$(N)    Descargar una versión nueva del wiki offline."
+	@echo "  $(G)test_mac$(N)      Ejecuta la aplicación en mac-os."
+	@echo ""
+	@echo "  $(G)full$(N)         Actualiza y genera todo el paquete para distribuir."
 	@echo ""
 
 
 full: clean init actualizar
 
 init:
+	@echo "${G}instalando dependencias ...${N}"
 	# npm install
 	npm install grunt-cli grunt grunt-string-replace
 	#sudo pip install beautifulsoup4
 
 _descargar_dump:
+	@echo "${G}descargando dump desde el wiki de huayra ...${N}"
 	@rm -r -f export
 	@rm -r -f export.tar.gz
-	#wget http://200.55.245.7:89/wiki/export.tar.gz
 	wget http://wiki.huayragnulinux.com.ar/export.tar.gz
 
 _descomprimir_dump:
-	tar xzf export.tar.gz
+	@echo "${G}descomprimiendo dump ...${N}"
+	@tar xzf export.tar.gz
 
 actualizar: _descargar_dump _descomprimir_dump _borrar_imagenes_duplicadas _mover_docs _reducir_dump _borrar_export _limpiar_directorios_vacios
-	@echo "done"
+	@echo "${G}Terminaron todos las tareas de actualización.${N}"
 
 _limpiar_directorios_vacios:
-	find src/documentacion -type d -empty -delete
+	@echo "${G}borrando directorios vacíos ...${N}"
+	@find src/documentacion -type d -empty -delete
 
 _borrar_imagenes_duplicadas:
-	python ./borrar_imagenes_duplicadas.py
+	@echo "${G}borrando imagenes duplicadas ...${N}"
+	@python ./borrar_imagenes_duplicadas.py
 
 _mover_docs:
-	rm -r -f documentacion
-	rm -r -f src/documentacion
-	mv export documentacion
-	mv documentacion src/
-	cp -r -f src/buscar.html src/documentacion/buscar.html
-	grunt string-replace
-	rm -r -f src/documentacion/images/deleted
-	rm -r -f src/documentacion/images/temp/
-	rm -r -f src/documentacion/images/archive/
+	@echo "${G}moviendo archivos de documentación ...${N}"
+	@rm -r -f documentacion
+	@rm -r -f src/documentacion
+	@mv export documentacion
+	@mv documentacion src/
+	@cp -r -f src/buscar.html src/documentacion/buscar.html
+	@grunt string-replace
+	@rm -r -f src/documentacion/images/deleted
+	@rm -r -f src/documentacion/images/temp/
+	@rm -r -f src/documentacion/images/archive/
 
 _reducir_dump:
-	python reducir_dump.py
+	@echo "${G}reduciendo dump ...${N}"
+	@python reducir_dump.py
 
 _borrar_export:
-	rm -r -f export.tar.gz
+	@echo "${G}borrando dump temporal ...${N}"
+	@rm -r -f export.tar.gz
 
 test_mac:
 	open -a node-webkit src
@@ -60,10 +74,11 @@ test:
 	echo "..."
 
 clean:
-	rm -fr documentacion
-	rm -fr src/documentacion
-	rm -fr node_modules
-	rm -fr export.tar.gz
+	@echo "${G}limpiando archivos ...${N}"
+	@rm -fr documentacion
+	@rm -fr src/documentacion
+	@rm -fr node_modules
+	@rm -fr export.tar.gz
 
 install:
-	echo "..."
+	@echo " < PASO OMITIDO >"
