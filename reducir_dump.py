@@ -49,7 +49,7 @@ def eliminar_atributos_srcset(texto):
 
         "texto <img src='algo.jpg' >b"
     """
-    return re.sub(r'srcset=".[^"]*"', r"srcset=''", texto)
+    return re.sub(r'srcset=".[^"]*"', r"  ", texto)
 
 def quitar_template(archivo):
     """Quita el texto extra (el templating de la wiki)

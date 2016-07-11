@@ -19,6 +19,7 @@ all:
 	@echo "  $(G)sincronizar_version$(N)   Sincroniza la versión con el servidor."
 	@echo ""
 	@echo "  $(G)full$(N)         Actualiza y genera todo el paquete para distribuir."
+	@echo "  $(G)utest$(N)        Ejecuta los test."
 	@echo ""
 
 
@@ -96,3 +97,6 @@ clean:
 
 install:
 	@echo " < PASO OMITIDO >"
+
+utest:
+	python test_realizar_dump.py 
