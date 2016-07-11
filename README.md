@@ -16,10 +16,7 @@ paquete .deb que incluye huayralinux.
 
 Luego tienes que clonar este repositorio y ejecutar estos comandos:
 
-    cd visormanual-bitbucket
-    nw src
-
-La aplicación tiene que aparecer en la barra de notificación del sistema:
-
-
-![](imagenes/icono.png)
+  cd huayra-visor-manual
+  npm install -g grunt-cli
+  make full
+  nw src
