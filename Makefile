@@ -78,7 +78,7 @@ test:
 patch_version:
 	@bumpversion patch --current-version ${VERSION} Makefile --list
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
-	@echo "make subir_version"
+	@echo "make sincronizar_version"
 
 sincronizar_version:
 	git commit -am 'release ${VERSION}'
