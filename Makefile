@@ -26,7 +26,7 @@ full: clean init actualizar
 
 init:
 	@echo "${G}instalando dependencias ...${N}"
-	@npm install
+	npm install
 
 _descargar_dump:
 	@echo "${G}descargando dump desde el wiki de huayra ...${N}"
