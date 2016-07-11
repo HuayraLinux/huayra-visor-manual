@@ -26,7 +26,6 @@ full: clean init actualizar
 
 init:
 	@echo "${G}instalando dependencias ...${N}"
-	@npm install
 	npm install grunt-cli grunt grunt-string-replace
 
 _descargar_dump:
