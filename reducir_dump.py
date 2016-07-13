@@ -65,15 +65,7 @@ def quitar_template(archivo):
         return
     del content["id"]
 
-    new_doc = BeautifulSoup(
-        """<html>
-               <head>
-                   <meta charset="utf-8" />
-               </head>
-               <body></body>
-           </html>
-        """
-    )
+    new_doc = BeautifulSoup(open("src/template.html"))
     new_doc.head.append(doc.title)
     new_doc.head.append(doc.style)
     new_doc.body.append(content)

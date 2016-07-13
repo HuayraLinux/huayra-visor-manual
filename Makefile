@@ -57,7 +57,6 @@ _mover_docs:
 	@mv export documentacion
 	@mv documentacion src/
 	@cp -r -f src/buscar.html src/documentacion/buscar.html
-	@grunt string-replace
 	@rm -r -f src/documentacion/images/deleted
 	@rm -r -f src/documentacion/images/temp/
 	@rm -r -f src/documentacion/images/archive/
