@@ -63,11 +63,9 @@ def quitar_template(archivo):
     content = doc.find(id="content")
     if content is None:
         return
-    del content["id"]
 
     new_doc = BeautifulSoup(open("src/template.html"))
     new_doc.head.append(doc.title)
-    new_doc.head.append(doc.style)
     new_doc.body.append(content)
 
     new = open(archivo, "w")

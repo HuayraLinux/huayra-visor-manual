@@ -17,8 +17,10 @@ div#column-content{
 }
 
 div#content {
-  margin: 0;
+  margin: auto;
   padding-top: 30px;
+  max-width: 960px;
+  border: none;
 }
 
 #navegador {
