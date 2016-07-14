@@ -1,15 +1,16 @@
  {
     "name": "visor manual",
-    "main": "app.html",
+    "main": "app://./documentacion/index.html",
+    "node-main": "node-init.js",
+    "inject-js-start": "js/init.js",
     "version": "0.1",
-    "single-instance": false,
+    "single-instance": true,
     "window": {
         "icon": "imagenes/icono.png",
-        "toolbar": false,
-        "show": false,
+        "toolbar": true,
+        "show": true,
         "min_width": 750,
         "min_height": 500,
         "position": "center"
     }
-
  }
