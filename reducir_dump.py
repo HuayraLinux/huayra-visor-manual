@@ -64,7 +64,7 @@ def quitar_template(archivo):
     if content is None:
         return
 
-    new_doc = BeautifulSoup(open("src/template.html"))
+    new_doc = BeautifulSoup(open("template.html"))
     new_doc.head.append(doc.title)
     new_doc.body.append(content)
 
