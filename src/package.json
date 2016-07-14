@@ -6,6 +6,7 @@
     "version": "0.1",
     "single-instance": true,
     "window": {
+        "title": "Huayra ayuda",
         "icon": "imagenes/icono.png",
         "toolbar": true,
         "show": true,
