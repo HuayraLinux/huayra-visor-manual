@@ -24,11 +24,18 @@
         }
     }
 
-    app.on('open', function(cmdline) {
+    function onOpen(cmdline) {
         navigateTo(getWikipage(parseCmdline(cmdline)));
-    });
+    }
 
-    /* Al ejecutarse por primera vez no levanta el evento de 'open' */
+    app.on('open', onOpen);
+
+    /* Quito el listener para no stackear los windows descartados de la closure */
+    window.onunload = function() {
+        app.removeListener('open', onOpen);
+    };
+
+    /* HACKY: Al ejecutarse por primera vez no levanta el evento de 'open' */
     process.mainModule.exports.onInit(function() {
         navigateTo(getWikipage(app.argv[0]));
     });
