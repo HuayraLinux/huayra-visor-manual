@@ -33,6 +33,7 @@
             /* Si no existe la página lo mando al index por perejil
              * TODO: Mandarlo a la página de búsqueda
              */
+            console.warn("No se pudo encontrar", wikipath);
             return 'app://./documentacion/index.html';
         }
     }
@@ -48,19 +49,23 @@
         return 'documentacion/articles/' + firstLetters(title) + mediawikiUrlify(title) + '.html';
     }
 
-    /* TODO: La página /articles/22/m/a/"Matar"_aplicaciones.html sería inaccesible con este método.
-     *       Averiguar que significa ese 22
-     */
     function firstLetters(title) {
-        /* Si el título es algo tipo 2.0:Accesibilidad la parte anterior al ':' no cuenta */
-        regex = /(?::|)(.)(.)?(.)?/
+        /* Si el título es algo tipo 2.0:Accesibilidad la parte anterior al ':' no cuenta
+         *     Nota: indexOf devuelve -1 si no encuentra algo y slice devuelve la cadena A PARTIR del índice dado
+         */
+        var title = title.slice(title.indexOf(':') + 1); /* Le quito un prefijo si lo tiene */
+        var regex = /(.)(.)?(.)?/
 
         /* Matcheo la expresión regular */
         return regex.exec(title)
                     /* El primer match no forma parte de los capturing groups */
                     .splice(1)
+                    /* MediaWiki-extension-dumpHTML escapea algunos caracteres, CREO que son estos
+                     *        (https://phabricator.wikimedia.org/diffusion/EDHT/repository/master/)
+                     */
+                    .map(function(char) { return '/\\*?"<>|~'.includes(char) ? char.charCodeAt(0).toString(16) : char; })
                     /* Si los capturing groups son undefined pongo el placeholder de mediawiki: '_' */
-                    .map(function (char) { return char ? char : '_'; })
+                    .map(function(char) { return char || '_'; })
                     /* Estas tres letras nos dan el directorio, así que lo hago todo string */
                     .join('/')
                     /* La estructura de directorios es toda en minúscula */
