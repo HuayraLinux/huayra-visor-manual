@@ -8,11 +8,11 @@
         navigateTo(getWikipage(app.argv.join(' ')));
     });
 
+    app.on('open', onOpen);
+
     function onOpen(cmdline) {
         navigateTo(getWikipage(parseCmdline(cmdline)));
     }
-
-    app.on('open', onOpen);
 
     /* Quito el listener para no stackear los windows descartados de la closure */
     window.onunload = function() {
@@ -20,7 +20,7 @@
     };
 
     function getWikipage(wikipage) {
-        if(wikipage === undefined) {
+        if(wikipage === undefined || wikipage === '') {
             return 'app://./documentacion/index.html';
         } else if(wikipage.startsWith('/articles')) {
             return 'app://./documentacion' + wikipage;
@@ -43,6 +43,13 @@
         if(window.location.href != url) {
             window.location.href = url;
         }
+    }
+
+    function parseCmdline(cmdline) {
+        /* El primer parametro es el binario de nwjs, el segundo la app y de ahi en mas los del visor
+         * Los vuelvo a unir a un string porque el único parámetro posible es la página
+         */
+        return cmdline.split(' ').splice(2).join(' ');
     }
 
     function getDirectory(title) {
@@ -80,10 +87,4 @@
         return title.replace(/ /g, '_');
     }
 
-    function parseCmdline(cmdline) {
-        /* El primer parametro es el binario de nwjs, el segundo la app y de ahi en mas los del visor
-         * Los vuelvo a unir a un string porque el único parámetro posible es la página
-         */
-        return cmdline.split(' ').splice(2).join(' ');
-    }
 })();
