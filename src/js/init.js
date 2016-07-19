@@ -61,7 +61,8 @@
          *     Nota: indexOf devuelve -1 si no encuentra algo y slice devuelve la cadena A PARTIR del índice dado
          */
         var title = title.slice(title.indexOf(':') + 1); /* Le quito un prefijo si lo tiene */
-        var regex = /(.)(.)?(.)?/
+        var regex = /(.)(.)?(.)?/;
+        var escaped = '/\\*?"<>|~';
 
         /* Matcheo la expresión regular */
         return regex.exec(title)
@@ -70,7 +71,7 @@
                     /* MediaWiki-extension-dumpHTML escapea algunos caracteres, CREO que son estos
                      *        (https://phabricator.wikimedia.org/diffusion/EDHT/repository/master/)
                      */
-                    .map(function(char) { return '/\\*?"<>|~'.includes(char) ? char.charCodeAt(0).toString(16) : char; })
+                    .map(function(char) { return escaped.includes(char) ? char.charCodeAt(0).toString(16) : char; })
                     /* Si los capturing groups son undefined pongo el placeholder de mediawiki: '_' */
                     .map(function(char) { return char || '_'; })
                     /* Estas tres letras nos dan el directorio, así que lo hago todo string */
