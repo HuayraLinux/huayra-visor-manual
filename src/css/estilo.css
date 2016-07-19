@@ -125,3 +125,7 @@ div#content {
 .magnify {
   display: none;
 }
+
+#zoom {
+  vertical-align: middle;
+}
