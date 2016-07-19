@@ -8,7 +8,7 @@
     "window": {
         "title": "Huayra ayuda",
         "icon": "imagenes/icono.png",
-        "toolbar": true,
+        "toolbar": false,
         "show": true,
         "min_width": 750,
         "min_height": 500,
