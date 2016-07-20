@@ -22,8 +22,8 @@
     function getWikipage(wikipage) {
         if(wikipage === undefined || wikipage === '') {
             return 'app://./documentacion/index.html';
-        } else if(wikipage.startsWith('/articles')) {
-            return 'app://./documentacion' + wikipage;
+        } else if(wikipage.startsWith('articles/')) {
+            return 'app://./documentacion/' + wikipage;
         } else {
             var wikipath = getDirectory(wikipage);
 
