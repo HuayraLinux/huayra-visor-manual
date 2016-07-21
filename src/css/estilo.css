@@ -17,6 +17,7 @@ div#column-content{
 }
 
 div#content {
+  font-size: initial;
   margin: auto;
   padding-top: 30px;
   max-width: 960px;
