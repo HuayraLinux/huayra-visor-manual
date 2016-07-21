@@ -1,3 +1,10 @@
+huayra-visor-manual (1.4.2) unstable; urgency=medium
+
+  * Bugfixes varios
+  * Rework en el control del zoom
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Thu, 21 Jul 2016 12:10:03 -0300
+
 huayra-visor-manual (1.4.1) unstable; urgency=medium
 
   * Bugfix en llamar la aplicación desde Primeros pasos y otras aplicaciones
