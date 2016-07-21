@@ -1,4 +1,5 @@
 (function() {
+    var nwwindow = require('nw.gui').Window.get();
     var app = require('nw.gui').App;
     var exists = require('fs').existsSync;
 
@@ -12,6 +13,7 @@
 
     function onOpen(cmdline) {
         navigateTo(getWikipage(parseCmdline(cmdline)));
+        nwwindow.focus();
     }
 
     /* Quito el listener para no stackear los windows descartados de la closure */
