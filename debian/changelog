@@ -1,3 +1,9 @@
+huayra-visor-manual (1.4.3) unstable; urgency=medium
+
+  * Bugfix, la ventana gana foco cuando le piden que abra una nueva página
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Thu, 21 Jul 2016 13:04:04 -0300
+
 huayra-visor-manual (1.4.2) unstable; urgency=medium
 
   * Bugfixes varios
