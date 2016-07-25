@@ -18,6 +18,7 @@ Luego tienes que clonar este repositorio y ejecutar estos comandos:
 
 ```
 cd huayra-visor-manual
+npm install
 npm install -g grunt-cli
 make full
 nw src
