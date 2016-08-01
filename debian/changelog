@@ -1,3 +1,10 @@
+huayra-visor-manual (1.4.5) unstable; urgency=medium
+
+  * Actualizando a la versión 1.4.5.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 01 Aug 2016 14:46:57 -0300
+
+
 huayra-visor-manual (1.4.4) unstable; urgency=medium
 
   * Quitado del autostart
