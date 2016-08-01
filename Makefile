@@ -70,7 +70,7 @@ _borrar_export:
 	@rm -r -f export.tar.gz
 
 test_mac:
-	open -a node-webkit src
+	nwjs src
 
 test:
 	echo "..."
