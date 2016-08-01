@@ -27,7 +27,7 @@ full: clean init actualizar
 
 init:
 	@echo "${G}instalando dependencias ...${N}"
-	npm install grunt-cli grunt grunt-string-replace
+	npm install
 
 _descargar_dump:
 	@echo "${G}descargando dump desde el wiki de huayra ...${N}"
@@ -98,4 +98,4 @@ install:
 	@echo " < PASO OMITIDO >"
 
 utest:
-	python test_realizar_dump.py 
+	python test_realizar_dump.py
