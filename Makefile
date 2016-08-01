@@ -63,6 +63,7 @@ _mover_docs:
 
 _reducir_dump:
 	@echo "${G}reduciendo dump ...${N}"
+	@sh borrar_plantillas.sh
 	@python reducir_dump.py
 
 _borrar_export:
