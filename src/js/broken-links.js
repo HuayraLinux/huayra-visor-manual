@@ -1,6 +1,6 @@
 $(function() {
     $('.new').click(function() {
-      console.warning("No se puede visitar un link nuevo.");
+      console.warn("No se puede visitar un link roto o nuevo.");
       return false;
     });
 });
