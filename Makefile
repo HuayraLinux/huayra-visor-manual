@@ -15,7 +15,8 @@ all:
 	@echo "  $(G)actualizar$(N)    Descargar una versión nueva del wiki offline."
 	@echo "  $(G)test_mac$(N)      Ejecuta la aplicación en mac-os."
 	@echo ""
-	@echo "  $(G)patch_version$(N)         Incrementa la versión."
+	@echo "  $(G)patch_version$(N)         Incrementa la versión (patch)."
+	@echo "  $(G)minor_version$(N)         Incrementa la versión (minor)."
 	@echo "  $(G)sincronizar_version$(N)   Sincroniza la versión con el servidor."
 	@echo ""
 	@echo "  $(G)full$(N)         Actualiza y genera todo el paquete para distribuir."
@@ -78,6 +79,11 @@ test:
 
 patch_version:
 	@bumpversion patch --current-version ${VERSION} Makefile --list
+	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
+	@echo "make sincronizar_version"
+
+minor_version:
+	@bumpversion minor --current-version ${VERSION} Makefile --list
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo "make sincronizar_version"
 
