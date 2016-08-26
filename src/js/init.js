@@ -5,6 +5,9 @@
 
     /* HACKY: Al ejecutarse por primera vez no levanta el evento de 'open' */
     process.mainModule.exports.onInit(function() {
+        /* HACK: Tengo una ventana ahora y voy a setearle la class para que el desktop pueda saber quién soy */
+        require('nwjs-hack').set_wmclass('huayra-visor-manual', true);
+
         /* Antes de cualquier cosa joineo los argumentos al string de título */
         navigateTo(getWikipage(app.argv.join(' ')));
     });
