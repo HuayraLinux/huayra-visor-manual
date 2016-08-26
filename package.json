@@ -13,6 +13,7 @@
   "author": "",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "nwjs-hack": "iglosiggio/nwjs-hack",
     "walk": "~2.2.1"
   }
 }
