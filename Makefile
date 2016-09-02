@@ -1,4 +1,4 @@
-VERSION=1.5.0
+VERSION=1.5.1
 NOMBRE="huayra-visor-manual"
 
 N=[0m
