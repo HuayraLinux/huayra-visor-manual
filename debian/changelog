@@ -1,3 +1,9 @@
+huayra-visor-manual (1.5.2) unstable; urgency=medium
+
+  * Intentando reparar el .install del paquete
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Fri, 02 Sep 2016 12:40:42 -0300
+
 huayra-visor-manual (1.5.1) unstable; urgency=medium
 
   * Agrega el hint de WM_CLASS
