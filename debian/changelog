@@ -1,3 +1,9 @@
+huayra-visor-manual (1.5.1) unstable; urgency=medium
+
+  * Agrega el hint de WM_CLASS
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Fri, 02 Sep 2016 12:30:45 -0300
+
 huayra-visor-manual (1.5.0) unstable; urgency=medium
 
   * Incluye arreglo menor sobre links rotos.
