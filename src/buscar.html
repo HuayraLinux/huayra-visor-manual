@@ -46,7 +46,7 @@
                 var app = angular.module('app', []);
                 var walk = require('walk');
                 var fs = require('fs');
-                var files = [];
+                var files = undefined;
 
                 // Hace foco en el campo de texto
                 var input = window.document.getElementById('input');
@@ -68,54 +68,62 @@
                     $scope.buscando = false;
                     $scope.resultado = [];
 
-                    $scope.buscar = function() {
-                        $scope.buscando = true;
-                        $scope.resultado = [];
+                    function setResults() {
+                        $scope.buscando = false;
 
-                        var walker  = walk.walk('./', {followLinks: false});
+                        for (var i=0; i<files.length; i++) {
+                            var ruta_archivo = files[i];
 
-                        walker.on('file', function(root, stat, next) {
-                            files.push(root + '/' + stat.name);
-                            next();
-                        });
+                            // Si es archivo .html
+                            if (/.html$/.test(ruta_archivo)) {
+                                var datos_como_buffer = fs.readFileSync(ruta_archivo);
+                                var data = datos_como_buffer.toString();
+                                var texto_a_buscar = new RegExp($scope.texto, 'i');
 
-                        walker.on('end', function() {
-                            $scope.buscando = false;
-                            $scope.$apply();
+                                var result = data.match(/<h1.*>(.*?)<\/h1>/g);
 
-                            for (var i=0; i<files.length; i++) {
-                                var ruta_archivo = files[i];
+                                if (result) {
+                                    var elementos = result.map(function(val) {
+                                        var div = document.createElement('div');
+                                        div.innerHTML = val;
+                                        return div.textContent;
+                                    });
 
-                                // Si es archivo .html
-                                if (/.html$/.test(ruta_archivo)) {
-                                    var datos_como_buffer = fs.readFileSync(ruta_archivo);
-                                    var data = datos_como_buffer.toString();
-                                    var texto_a_buscar = new RegExp($scope.texto, 'i');
+                                    if (elementos.length > 0) {
+                                        var titulo = elementos[0];
 
-                                    var result = data.match(/<h1.*>(.*?)<\/h1>/g);
-
-                                    if (result) {
-                                        var elementos = result.map(function(val){
-                                            var div = document.createElement('div');
-                                            div.innerHTML = val;
-                                            return div.textContent;
-                                        });
-
-                                        if (elementos.length > 0) {
-                                            var titulo = elementos[0];
-
-                                            // Busca solo en el titulo de la pagina
-                                            // Nota: cambiar 'titulo' por 'data' si se quiere buscar
-                                            // por contenido.
-                                            if (texto_a_buscar.test(titulo)) {
-                                                $scope.resultado.push({titulo: titulo, src: ruta_archivo});
-                                                $scope.$apply();
-                                            }
+                                        // Busca solo en el titulo de la pagina
+                                        // Nota: cambiar 'titulo' por 'data' si se quiere buscar
+                                        // por contenido.
+                                        if (texto_a_buscar.test(titulo)) {
+                                            $scope.resultado.push({titulo: titulo, src: ruta_archivo});
                                         }
                                     }
                                 }
                             }
-                        });
+                        }
+                    }
+
+                    $scope.buscar = function() {
+                        $scope.buscando = true;
+                        $scope.resultado = [];
+
+                        if(!files) {
+                            files = [];
+                            var walker  = walk.walk('./', {followLinks: false});
+
+                            walker.on('file', function(root, stat, next) {
+                                files.push(root + '/' + stat.name);
+                                next();
+                            });
+
+                            walker.on('end', function() {
+                                setResults();
+                                $scope.$apply()
+                            });
+                        } else {
+                            setResults();
+                        }
                     }
                 });
             </script>

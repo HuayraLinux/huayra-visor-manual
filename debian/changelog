@@ -1,3 +1,9 @@
+huayra-visor-manual (1.5.4) UNRELEASED; urgency=medium
+
+  * Fixeado error en la búsqueda (issue #23) 
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Wed, 24 May 2017 16:56:27 -0300
+
 huayra-visor-manual (1.5.2) unstable; urgency=medium
 
   * Intentando reparar el .install del paquete
